@@ -12,7 +12,7 @@ export function Home() {
     const [skills, setSkills] = useState<Skill[]>([])
 
     function handleNewSkill() {
-        if(newSkill === '') {
+        if (newSkill === '') {
             return null
         }
         const data: Skill = {
@@ -30,16 +30,16 @@ export function Home() {
     return (
         <View style={styles.container}>
             <StatusBar barStyle='light-content' />
-            <Text style={styles.title}>Bem vindo</Text>
+            <Text style={styles.title} testID="welcome">Bem vindo</Text>
             <Text style={[styles.title, { fontSize: 24 }]}>Nos diga suas habilidades:</Text>
-            <TextInput style={styles.input} placeholder="Nova habilidade" placeholderTextColor="#999" value={newSkill} onChangeText={setNewSkill}/>
+            <TextInput style={styles.input} placeholder="Nova habilidade" placeholderTextColor="#999" value={newSkill} onChangeText={setNewSkill} />
             <Button onPress={handleNewSkill}>Adicionar</Button>
             {skills.length ? (
                 <>
-                    <Text style={[styles.title, { marginTop: 24, fontSize: 20}]}>Minhas Habilidades:</Text>
-                    <FlatList 
-                        data={skills} 
-                        keyExtractor={item => item.id} 
+                    <Text style={[styles.title, { marginTop: 24, fontSize: 20 }]}>Minhas Habilidades:</Text>
+                    <FlatList
+                        data={skills}
+                        keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             <View style={styles.skillArea}>
                                 <View style={styles.skills}>
@@ -53,7 +53,7 @@ export function Home() {
                                     </Text>
                                 </View>
                             </View>
-                        )} 
+                        )}
                     />
                     <Button onPress={() => setSkills([])} style={{ backgroundColor: '#f76adb' }}>Limpar</Button>
                 </>
