@@ -1,15 +1,11 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-type ButtonProps = {
-    children: React.ReactNode,
-    onPress: () => void,
-    style?: object
-}
+type ButtonProps = TouchableOpacityProps
 
-export function Button({children, onPress, style}: ButtonProps) {
+export function Button({ children, style, ...rest }: ButtonProps) {
     return (
-        <TouchableOpacity style={[styles.button, style]} activeOpacity={0.7} onPress={onPress}>
+        <TouchableOpacity style={[styles.button, style]} activeOpacity={0.7} {...rest}>
             <Text style={styles.buttonText}>{children}</Text>
         </TouchableOpacity>
     )
@@ -22,7 +18,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         marginTop: 8,
         alignItems: 'center'
-        
+
     },
     buttonText: {
         color: '#FDFDFD',

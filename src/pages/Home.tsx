@@ -32,14 +32,16 @@ export function Home() {
             <StatusBar barStyle='light-content' />
             <Text style={styles.title} testID="welcome">Bem vindo</Text>
             <Text style={[styles.title, { fontSize: 24 }]}>Nos diga suas habilidades:</Text>
-            <TextInput style={styles.input} placeholder="Nova habilidade" placeholderTextColor="#999" value={newSkill} onChangeText={setNewSkill} />
-            <Button onPress={handleNewSkill}>Adicionar</Button>
+            <TextInput style={styles.input} placeholder="Nova habilidade" placeholderTextColor="#999" value={newSkill} onChangeText={setNewSkill} testID="inputNewSkill" />
+            <Button onPress={handleNewSkill} testID="button-add">Adicionar</Button>
             {skills.length ? (
                 <>
                     <Text style={[styles.title, { marginTop: 24, fontSize: 20 }]}>Minhas Habilidades:</Text>
                     <FlatList
+                        testID="skillsList"
                         data={skills}
                         keyExtractor={item => item.id}
+                        keyboardShouldPersistTaps="never"
                         renderItem={({ item }) => (
                             <View style={styles.skillArea}>
                                 <View style={styles.skills}>
